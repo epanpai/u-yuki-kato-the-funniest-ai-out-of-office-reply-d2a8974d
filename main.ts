@@ -27,7 +27,9 @@
 //
 // Short is also a tie-break asset: on an exact Judge win rate tie the
 // smaller text (fewer bytes) places first, and 92 bytes is near the
-// floor for a line that still lands a full joke.
+// floor for a line that still lands a full joke. The vote count is the
+// whole punchline — "4.7 billion to one" names the training data's size
+// as the landslide, so trimming it would trim the joke itself.
 //
 // Run locally:  mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
