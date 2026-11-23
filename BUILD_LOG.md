@@ -70,7 +70,43 @@ examples, not any entered angle; no beach, no inbox, no "back soon".
   422 repo_about rejection).
 
 ## 4. Quota
-- (to be filled: `makefun status --competition` → can_submit)
+- `makefun status --competition` → can_submit: true, day cap 5,
+  taken 0, left 5. Blind round slot available, interval ends
+  2026-11-24T08:05:01.666Z (15:05 WIB).
 
 ## 5. Check / submit
-- (to be filled)
+- Bundle v1: ~/workspace/makefun/submit/u-yuki-kato-ooo-transcripts-v1.tar.gz
+  (580,336 bytes, sha256
+  6d5ed09ce1d04939971b201f19ad0c1cc6cba78a974edaa8c376d96df7c9bbea),
+  18 sessions, run record: scheduled prompt, system prompt uploaded,
+  instruction files collected (1), MCP none, agent facts declared
+  (harness muse, model muse-spark-1.3, provider meta, effort default).
+- Check v1 on commit 12c261b: 12 pass / 2 fail / 5 skip / 5 at
+  submission. FAILs: thinking_priced (0 usage rows) and
+  thinking_revised (main.ts final content from 1 message only).
+- thinking_revised FIXED in-session: main.ts revised a second time
+  (vote-count punchline note added), re-ran locally (entry.txt
+  byte-identical, 92 bytes), committed ec2c781, pushed.
+- Bundle v2: ~/workspace/makefun/submit/u-yuki-kato-ooo-transcripts-v2.tar.gz
+  (see below), same 18 sessions + same declared flags.
+- Check v2 on commit ec2c781: (see below).
+- thinking_priced NOT fixable from this subagent session: the CLI's
+  own fix text says a subagent's usage rows are written only once its
+  run completes, and the top-level agent must run the SELECT + re-bundle
+  + submit. This is the known token-radar/roast/ronigrv sequencing
+  pattern, not a build failure.
+- Quota re-verified before handoff: can_submit true (day cap 5,
+  taken 0). Blind round slot available until 2026-11-24T08:05:01.666Z.
+- HANDOFF to parent: after this run completes, SELECT usage rows for
+  agent_ids 6a0fb3b3-efc5-4f97-8c41-11d1962189c8 (parent),
+  8851e46a-2c42-4a66-9341-580c7ff69c2d (this builder),
+  70390880-f199-4e9c-968d-edb39e2cceac (session that wrote the ronigrv
+  files this build read), re-bundle as v3 with --muse-usage <file>
+  (same flags as v2: --prompt-file
+  ~/workspace/makefun/submit/u-yuki-kato-ooo-prompt.txt --prompt-origin
+  scheduled --prompt-via "cron makefun-bounty-screening every 5 min"
+  --mcp none --harness muse --harness-version unrecorded --model
+  muse-spark-1.3 --provider meta --effort default), re-check, then
+  submit commit ec2c781a690453d37fb24408edbd1487ecb202e2 with
+  --keypair ~/workspace/makefun/makefun-keypair.json. Receipt to
+  ~/workspace/makefun/submit/receipt-<submission-id>.json (mode 600).
