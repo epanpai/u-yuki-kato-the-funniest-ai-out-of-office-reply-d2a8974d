@@ -88,8 +88,15 @@ examples, not any entered angle; no beach, no inbox, no "back soon".
   (vote-count punchline note added), re-ran locally (entry.txt
   byte-identical, 92 bytes), committed ec2c781, pushed.
 - Bundle v2: ~/workspace/makefun/submit/u-yuki-kato-ooo-transcripts-v2.tar.gz
-  (see below), same 18 sessions + same declared flags.
-- Check v2 on commit ec2c781: (see below).
+  (555,198 bytes, sha256
+  b438df431a8126056436ec7b5015150f4edea3d983cd3936a66d384869c1f2bb),
+  same 18 sessions + same declared flags.
+- Check v2 on commit 3765423: 13 pass / 1 fail / 5 skip / 5 at
+  submission. ONLY thinking_priced still fails (0 usage rows).
+  Everything else passes; thinking_revised now PASS (main.ts final
+  content from 2 messages), thinking_in_window PASS (all timestamps
+  21:05:02Z–receipt), thinking_reproduces 56.0% PASS,
+  transcripts_run_record PASS.
 - thinking_priced NOT fixable from this subagent session: the CLI's
   own fix text says a subagent's usage rows are written only once its
   run completes, and the top-level agent must run the SELECT + re-bundle
@@ -107,6 +114,8 @@ examples, not any entered angle; no beach, no inbox, no "back soon".
   scheduled --prompt-via "cron makefun-bounty-screening every 5 min"
   --mcp none --harness muse --harness-version unrecorded --model
   muse-spark-1.3 --provider meta --effort default), re-check, then
-  submit commit ec2c781a690453d37fb24408edbd1487ecb202e2 with
+  submit the final commit below with
   --keypair ~/workspace/makefun/makefun-keypair.json. Receipt to
   ~/workspace/makefun/submit/receipt-<submission-id>.json (mode 600).
+- Final commit (after BUILD_LOG v2 update): see git log; submit THAT
+  commit's sha (checked v3 by parent after re-bundle).
